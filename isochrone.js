@@ -89,7 +89,7 @@ map.on('load', function () {
 
     // Turf buffer 100 km autour du point de l'adresse géolocalisée
     var point = turf.point([lon, lat]);
-    var buffered = turf.buffer(point, 144, {units: 'kilometers'});
+    var buffered = turf.buffer(point, 28.7, {units: 'kilometers'});
 
     // buff = turf.featureCollection([buffered]);
     // console.log(buffered);
@@ -98,14 +98,14 @@ map.on('load', function () {
 
     // Suppression d'un buffer déjà existant
     try {
-      map.removeLayer('buffer_100kmLayer');
-      map.removeSource('buffer_100km');
+      map.removeLayer('buffer_20kmLayer');
+      map.removeSource('buffer_20km');
     } catch (e) {
   
     };
 
     // Source du buffer
-    map.addSource('buffer_100km', {
+    map.addSource('buffer_20km', {
       type: 'geojson',
       data: {
         "type": 'FeatureCollection',
@@ -114,13 +114,13 @@ map.on('load', function () {
     });
 
     // Ajout des coordonnées du buffer 
-    map.getSource('buffer_100km').setData(buffered.geometry);
+    map.getSource('buffer_20km').setData(buffered.geometry);
 
     // Ajout du buffer
     map.addLayer({
-      'id': 'buffer_100kmLayer',
+      'id': 'buffer_20kmLayer',
       'type': 'fill',
-      'source': 'buffer_100km',
+      'source': 'buffer_20km',
       'layout': {},
       'paint': {
         'fill-color': '#5a3fc0',
