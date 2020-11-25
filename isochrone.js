@@ -42,6 +42,7 @@ for (var i = 0; i < inputs.length; i++) {
 var geocoder = new MapboxGeocoder({ // Initialize the geocoder
   accessToken: mapboxgl.accessToken, // Set the access token
   placeholder: 'Rechercher une adresse',
+  countries: 'fr',
   mapboxgl: mapboxgl, // Set the mapbox-gl instance
   marker: false, // Do not use the default marker style
 });
